@@ -44,9 +44,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #else  // If use MKL, simply include the MKL header
 
+#ifdef USE_ACCELERATE
+#include <Accelerate/Accelerate.h>
+#else
 extern "C" {
 #include <cblas.h>
 }
+#endif  // USE_ACCELERATE
+
 #include <math.h>
 
 // Functions that caffe uses but are not present if MKL is not linked.
